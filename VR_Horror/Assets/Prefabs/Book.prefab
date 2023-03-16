@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70f57afbce32924b9b2fb37222434bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MinImpulseForce>k__BackingField: 2
+  <MinImpulseForce>k__BackingField: 4
   <MaxImpulseForce>k__BackingField: 10
   <CurrentRigidbody>k__BackingField: {fileID: 3586720340089593655}
