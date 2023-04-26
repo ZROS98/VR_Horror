@@ -980,7 +980,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134857397}
-  m_Layer: 0
+  - component: {fileID: 134857398}
+  - component: {fileID: 134857399}
+  m_Layer: 7
   m_Name: InteractiveSheetRack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,6 +1017,51 @@ Transform:
   m_Father: {fileID: 1427524740}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!114 &134857398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134857396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198abe9c01be478cb598d599a6967fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PhysicalObjectsCollection>k__BackingField:
+  - {fileID: 520943208}
+  - {fileID: 2112689181}
+  - {fileID: 379513434}
+  - {fileID: 982096629}
+  - {fileID: 1886539324}
+  - {fileID: 364889338}
+  - {fileID: 1608416428}
+  - {fileID: 787254210}
+  - {fileID: 837453915}
+  - {fileID: 984481959}
+  - {fileID: 365724156}
+--- !u!65 &134857399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134857396}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6, y: 1.3, z: 0.55}
+  m_Center: {x: 0, y: 0.6055065, z: 0.008442007}
 --- !u!114 &136115721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2977,7 +3024,7 @@ GameObject:
   - component: {fileID: 364889338}
   - component: {fileID: 364889337}
   - component: {fileID: 364889339}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3126,7 +3173,7 @@ GameObject:
   - component: {fileID: 365724156}
   - component: {fileID: 365724155}
   - component: {fileID: 365724157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3363,7 +3410,7 @@ GameObject:
   - component: {fileID: 379513434}
   - component: {fileID: 379513433}
   - component: {fileID: 379513435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4548,7 +4595,7 @@ GameObject:
   - component: {fileID: 520943208}
   - component: {fileID: 520943207}
   - component: {fileID: 520943209}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6377,7 +6424,7 @@ GameObject:
   - component: {fileID: 787254210}
   - component: {fileID: 787254209}
   - component: {fileID: 787254211}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6771,7 +6818,7 @@ GameObject:
   - component: {fileID: 837453915}
   - component: {fileID: 837453914}
   - component: {fileID: 837453916}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7059,6 +7106,7 @@ GameObject:
   - component: {fileID: 933655558}
   - component: {fileID: 933655560}
   - component: {fileID: 933655559}
+  - component: {fileID: 933655561}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7125,6 +7173,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &933655561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933655556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ddde66e2324e16825c3c2145ff6239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Duration>k__BackingField: 5
+  <Timer>k__BackingField: 0
 --- !u!1 &935308837
 GameObject:
   m_ObjectHideFlags: 0
@@ -7799,7 +7861,7 @@ GameObject:
   - component: {fileID: 982096629}
   - component: {fileID: 982096628}
   - component: {fileID: 982096630}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7948,7 +8010,7 @@ GameObject:
   - component: {fileID: 984481959}
   - component: {fileID: 984481958}
   - component: {fileID: 984481960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11420,7 +11482,7 @@ GameObject:
   - component: {fileID: 1608416428}
   - component: {fileID: 1608416427}
   - component: {fileID: 1608416429}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14273,7 +14335,7 @@ GameObject:
   - component: {fileID: 1886539324}
   - component: {fileID: 1886539323}
   - component: {fileID: 1886539325}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15553,7 +15615,7 @@ GameObject:
   - component: {fileID: 2112689181}
   - component: {fileID: 2112689180}
   - component: {fileID: 2112689182}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SheetRackCase_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16236,7 +16298,7 @@ PrefabInstance:
       addedObject: {fileID: 1291821140}
     - targetCorrespondingSourceObject: {fileID: 8610770165221815362, guid: beef3bcde1610f04aa96275436147bb9,
         type: 3}
-      insertIndex: -1
+      insertIndex: 29
       addedObject: {fileID: 134857397}
     - targetCorrespondingSourceObject: {fileID: 8610770165221815362, guid: beef3bcde1610f04aa96275436147bb9,
         type: 3}

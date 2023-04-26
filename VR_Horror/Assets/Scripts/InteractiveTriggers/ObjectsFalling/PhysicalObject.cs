@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace VR_Horror.ObjectsFalling
 {
-    public class PhysicalObjects : MonoBehaviour
+    public class PhysicalObject : MonoBehaviour
     {
         [field: SerializeField]
         private float MinImpulseForce { get; set; }
