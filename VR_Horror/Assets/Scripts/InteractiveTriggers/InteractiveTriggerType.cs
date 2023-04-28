@@ -5,5 +5,6 @@
         NONE,
         FALLING_OBJECTS,
         ANGRY_FURNITURE,
+        AGGRESSIVE_MANNEQUIN
     }
 }
