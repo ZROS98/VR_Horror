@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace VR_Horror.ObjectsFalling
+namespace VR_Horror.InteractiveTriggers
 {
     public class PhysicalObject : MonoBehaviour
     {

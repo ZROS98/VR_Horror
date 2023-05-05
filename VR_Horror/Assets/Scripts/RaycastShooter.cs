@@ -8,10 +8,12 @@ namespace VR_Horror
         [field: SerializeField]
         private float Duration { get; set; } = 5.0f;
         [field: SerializeField]
+        private float RayDistance { get; set; } = 2.0f;
+        [field: SerializeField]
         private float Timer { get; set; } = 0.0f;
-
-        private bool IsActivated { get; set; } = false;
         
+        private bool IsActivated { get; set; } = false;
+
         protected virtual void Update ()
         {
             HandleRaycast();
@@ -20,12 +22,11 @@ namespace VR_Horror
         private void HandleRaycast ()
         {
             RaycastHit hit;
-            float TheDistace;
 
-            Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
+            Vector3 forward = transform.TransformDirection(Vector3.forward) * RayDistance;
             Debug.DrawRay(transform.position, forward, Color.green);
 
-            if (Physics.Raycast(transform.position, (forward), out hit))
+            if (Physics.Raycast(transform.position, forward, out hit, RayDistance))
             {
                 if (hit.collider.gameObject.TryGetComponent(out InteractiveTriggerController interactiveTriggerController))
                 {
@@ -39,10 +40,19 @@ namespace VR_Horror
                 }
                 else
                 {
-                    Timer = 0.0f;
-                    IsActivated = false;
+                    ResetTimer();
                 }
             }
+            else
+            {
+                ResetTimer();
+            }
+        }
+
+        private void ResetTimer ()
+        {
+            Timer = 0.0f;
+            IsActivated = false;
         }
     }
 }

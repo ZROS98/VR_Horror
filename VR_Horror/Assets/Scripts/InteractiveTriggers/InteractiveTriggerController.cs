@@ -33,7 +33,7 @@ namespace VR_Horror.InteractiveTriggers
             Initialize();
         }
 
-        private void Initialize ()
+        protected virtual void Initialize ()
         {
             CurrentWaitForSeconds = new WaitForSeconds(TriggerDelay);
         }

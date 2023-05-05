@@ -5,6 +5,8 @@
         NONE,
         FALLING_OBJECTS,
         ANGRY_FURNITURE,
-        AGGRESSIVE_MANNEQUIN
+        AGGRESSIVE_MANNEQUIN,
+        FLIES_PARTICLES,
+        COLLAPSIBLE_FLOOR,
     }
 }
