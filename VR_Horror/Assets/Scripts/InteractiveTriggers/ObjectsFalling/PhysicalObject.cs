@@ -1,4 +1,3 @@
-using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -20,7 +19,6 @@ namespace VR_Horror.InteractiveTriggers
         protected virtual void Start ()
         {
             Initialize();
-            //StartCoroutine(TimerToPushObjectsProcess());
         }
 
         [Button]
@@ -37,13 +35,6 @@ namespace VR_Horror.InteractiveTriggers
         private void Initialize ()
         {
             CurrentWaitForSeconds = new WaitForSeconds(TimeToPushObject);
-        }
-
-        private IEnumerator TimerToPushObjectsProcess ()
-        {
-            yield return CurrentWaitForSeconds;
-
-            PushObject();
         }
     }
 }
