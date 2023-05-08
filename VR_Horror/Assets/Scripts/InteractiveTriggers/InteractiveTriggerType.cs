@@ -8,5 +8,6 @@
         AGGRESSIVE_MANNEQUIN,
         FLIES_PARTICLES,
         COLLAPSIBLE_FLOOR,
+        DOOR_OPPENING,
     }
 }
