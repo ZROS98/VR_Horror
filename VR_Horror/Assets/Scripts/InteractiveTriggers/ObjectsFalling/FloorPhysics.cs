@@ -18,6 +18,8 @@ namespace VR_Horror.InteractiveTriggers
             {
                 base.ActivateInteractiveObject();
                 StartCoroutine(CollapseFloreProcess());
+                WasActivated = true;
+                OnTriggerActivated(CurrentInteractiveTriggerType);
             }
         }
 
