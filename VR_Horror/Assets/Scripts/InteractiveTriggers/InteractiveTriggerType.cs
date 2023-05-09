@@ -9,5 +9,6 @@
         FLIES_PARTICLES,
         COLLAPSIBLE_FLOOR,
         DOOR_OPPENING,
+        MANNEQUIN_IN_FIRE,
     }
 }
