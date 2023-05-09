@@ -10,5 +10,6 @@
         COLLAPSIBLE_FLOOR,
         DOOR_OPPENING,
         MANNEQUIN_IN_FIRE,
+        INSECT_PARTICLES,
     }
 }
