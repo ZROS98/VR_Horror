@@ -15,8 +15,8 @@ TagManager:
   - InteractiveObject
   - RaycastTarget
   - AutoDestroy
-  - 
-  - 
+  - Floor
+  - Player
   - 
   - 
   - 

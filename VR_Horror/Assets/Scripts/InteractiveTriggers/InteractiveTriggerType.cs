@@ -11,5 +11,6 @@
         DOOR_OPPENING,
         MANNEQUIN_IN_FIRE,
         INSECT_PARTICLES,
+        ELEVATOR,
     }
 }
