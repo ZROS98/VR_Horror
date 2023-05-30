@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PupilLabs
 {
     public class FrameVisualizer : MonoBehaviour
     {
+        [field: SerializeField]
+        private List<RawImage> RawImageCollection { get; set; }
+
         public SubscriptionsController subscriptionsController;
         public Transform cameraAsParent;
         public Material eyeFrameMaterial;
@@ -74,25 +78,32 @@ namespace PupilLabs
             Transform parent = cameraAsParent;
 
             eyeTexture[eyeIndex] = new Texture2D(100, 100);
-            eyeRenderer[eyeIndex] = InitializeEyeObject(eyeIndex, parent);
-            eyeRenderer[eyeIndex].material = new Material(eyeFrameMaterial);
-            eyeRenderer[eyeIndex].material.mainTexture = eyeTexture[eyeIndex];
-            Vector2 textureScale;
-
-            if (eyeIndex == 0) //right by default
-            {
-                textureScale = model200Hz ? new Vector2(1, -1) : new Vector2(-1, 1);
-            }
-            else //index == 1 -> left by default
-            {
-                textureScale = model200Hz ? new Vector2(-1, 1) : new Vector2(1, -1);
-            }
-
-            eyeRenderer[eyeIndex].material.mainTextureScale = textureScale;
+            // eyeRenderer[eyeIndex] = InitializeEyeObject(eyeIndex, parent);
+            // eyeRenderer[eyeIndex].material = new Material(eyeFrameMaterial);
+            // eyeRenderer[eyeIndex].material.mainTexture = eyeTexture[eyeIndex];
+            // Vector2 textureScale;
+            //
+            // if (eyeIndex == 0) //right by default
+            // {
+            //     textureScale = model200Hz ? new Vector2(1, -1) : new Vector2(-1, 1);
+            // }
+            // else //index == 1 -> left by default
+            // {
+            //     textureScale = model200Hz ? new Vector2(-1, 1) : new Vector2(1, -1);
+            // }
+            //
+            // eyeRenderer[eyeIndex].material.mainTextureScale = textureScale;
 
             lastUpdate = Time.time;
 
             eyePublishingInitialized[eyeIndex] = true;
+
+            FillImage(eyeIndex);
+        }
+
+        private void FillImage(int eyeIndex)
+        {
+            RawImageCollection[eyeIndex].texture = eyeTexture[eyeIndex];
         }
 
         MeshRenderer InitializeEyeObject(int eyeIndex, Transform parent)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ namespace PupilLabs
     public class CalibrationStatusText : MonoBehaviour
     {
         public SubscriptionsController subsCtrl;
-        public Text statusText;
+        public TMP_Text statusText;
 
         private CalibrationController calibrationController;
 

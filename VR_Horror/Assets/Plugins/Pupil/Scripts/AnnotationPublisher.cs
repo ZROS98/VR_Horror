@@ -36,13 +36,19 @@ namespace PupilLabs
             }
         }
 
-        public void SendAnnotation(string label, float duration = 0.0f, Dictionary<string, object> customData = null)
+        public void SendAnnotation(string label, float duration = 0.0f, Dictionary<string, string> customData = null)
         {
             double pupiltime = timeSync.ConvertToPupilTime(Time.realtimeSinceStartup);
             SendAnnotation(label, pupiltime, duration, customData);
         }
+        //double _unityTime = timeSync.ConvertToUnityTime(_pupilData.PupilTimestamp);
+        public void SendAnnotationUnityTime(string label, float duration = 0.0f, Dictionary<string, string> customData = null)
+        {
+            double unitytime = timeSync.ConvertToUnityTime(Time.realtimeSinceStartup);
+            SendAnnotation(label, unitytime, duration, customData);
+        }
 
-        public void SendAnnotation(string label, double pupiltimestamp, float duration = 0.0f, Dictionary<string, object> customData = null)
+        public void SendAnnotation(string label, double pupiltimestamp, float duration = 0.0f, Dictionary<string, string> customData = null) //<string, object>
         {
             if (!isActiveAndEnabled)
             {
