@@ -150,7 +150,7 @@ namespace PupilLabs
 
         private void Connected()
         {
-            Debug.Log("Succesfully connected to Pupil! ");
+            Debug.Log("<b><color=#46CA3A>SUCCESS</color></b>:<color=green>connected to Pupil!</color>");
 
             UpdatePupilVersion();
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,11 +51,11 @@ namespace PupilLabs.Demos
 
         void SendHeadPosAnnotations()
         {
-            Dictionary<string, object> headData = new Dictionary<string, object>();
+            Dictionary<string, string> headData = new Dictionary<string, string>();
 
-            headData["head_world_x"] = head.position.x;
-            headData["head_world_y"] = head.position.y;
-            headData["head_world_z"] = head.position.z;
+            headData["head_world_x"] = head.position.x.ToString(CultureInfo.InvariantCulture);
+            headData["head_world_y"] = head.position.y.ToString();
+            headData["head_world_z"] = head.position.z.ToString();
 
             annotationPub.SendAnnotation(label: "head pos", customData: headData);
         }

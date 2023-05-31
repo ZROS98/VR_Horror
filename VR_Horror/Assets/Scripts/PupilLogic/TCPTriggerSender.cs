@@ -9,9 +9,9 @@ namespace VR_Horror
 {
     public class TCPTriggerSender : MonoBehaviour
     {
-        public string LabViewServerIP = "192.168.50.172";
-        public int LabViewServerPort = 5000;
-        public string triggerMessageToBeSent = "";
+        public string LabViewServerIP = "192.168.50.172"; //100.1.1.1
+        public int LabViewServerPort = 5000; //5000
+        public string triggerMessageToBeSent = ""; //15555
 
         #region private members
 
