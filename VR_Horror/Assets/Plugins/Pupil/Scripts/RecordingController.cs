@@ -9,14 +9,17 @@ namespace PupilLabs
     {
         public RequestController requestCtrl;
 
-        [Header("Recording Path")]
-        public bool useCustomPath;
+        [Header("Recording Path")] public bool useCustomPath;
+
+        [Tooltip("Please enter the session participant code in order to have the session folder named with it")]
+        public string sessionParticipantCode = "";
+
+        public GameObject recordingIndicator;
         [SerializeField] private string customPath;
 
-        [Header("Controls")]
-        [SerializeField] private bool recordEyeFrames = true;
-        [SerializeField] private bool startRecording;
-        [SerializeField] private bool stopRecording;
+        [Header("Controls")] [SerializeField] private bool recordEyeFrames = true;
+        [SerializeField] public bool startRecording;
+        [SerializeField] public bool stopRecording;
 
         public bool IsRecording { get; private set; }
 
@@ -24,11 +27,11 @@ namespace PupilLabs
         {
             if (requestCtrl == null)
             {
-                Debug.LogError("RecordingController is missing the required RequestController reference. Please connect the reference, or the component won't work correctly.");
+                Debug.LogError(
+                    "RecordingController is missing the required RequestController reference. Please connect the reference, or the component won't work correctly.");
                 enabled = false;
                 return;
             }
-
         }
 
         void OnDisable()
@@ -46,10 +49,14 @@ namespace PupilLabs
                 if (IsRecording)
                 {
                     stopRecording = true;
+                    Debug.Log("<color=red>trying to STOP recording</color>");
+                    recordingIndicator.SetActive(false);
                 }
                 else
                 {
                     startRecording = true;
+                    Debug.Log("<color=green>trying to START recording</color>");
+                    recordingIndicator.SetActive(true);
                 }
             }
 
@@ -91,9 +98,7 @@ namespace PupilLabs
 
             requestCtrl.Send(new Dictionary<string, object>
             {
-                { "subject","recording.should_start" }
-                , { "session_name", path }
-                , { "record_eye",recordEyeFrames}
+                { "subject", "recording.should_start" }, { "session_name", path }, { "record_eye", recordEyeFrames }
             });
             IsRecording = true;
 
@@ -135,8 +140,14 @@ namespace PupilLabs
             }
             else
             {
-                string date = System.DateTime.Now.ToString("yyyy_MM_dd");
-                path = $"{Application.dataPath}/{date}";
+                string date = System.DateTime.Now.ToString("yyyy_MM_dd_HH-mm");
+                if (sessionParticipantCode.Length > 0)
+                {
+                    path = $"{Application.dataPath}/{date + " " + sessionParticipantCode}";
+                }
+                else
+                    path = $"{Application.dataPath}/{date}";
+
                 path = path.Replace("Assets/", ""); //go one folder up
             }
 

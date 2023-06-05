@@ -3,6 +3,7 @@ using System.Collections;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace VR_Horror
@@ -153,7 +154,8 @@ namespace VR_Horror
 
         /// <summary> 	
         /// Send message to server using socket connection. 	
-        /// </summary> 	
+        /// </summary>
+        [Button]
         public void SendMessage()
         {
             justSentMessage = false;
