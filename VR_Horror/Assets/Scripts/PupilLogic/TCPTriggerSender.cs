@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using VR_Horror.InteractiveTriggers;
 
 namespace VR_Horror
 {
@@ -19,10 +20,6 @@ namespace VR_Horror
         private TcpClient socketConnection;
 
         private Thread clientReceiveThread;
-
-        //private bool wasConnectedInfoShown = false;
-        //private bool wasDisconnectedInfoShown = false;
-        //private bool isReconnectInitialized = false;
         private bool isConnectToTcpServerRunning = false;
         [HideInInspector] public bool justSentMessage = false;
 
@@ -32,7 +29,6 @@ namespace VR_Horror
         void Start()
         {
             StartCoroutine(ConnectToTcpServer());
-            //StartCoroutine("CheckConnectionStatus", 3.0f);
         }
 
         /// <summary> 	
@@ -72,34 +68,6 @@ namespace VR_Horror
                 }
 
                 yield return new WaitForSeconds(0.3f);
-            }
-        }
-
-        IEnumerator CheckConnectionStatus(float delay)
-        {
-            while (true)
-            {
-                if (socketConnection != null)
-                {
-                    if (socketConnection.Connected)
-                    {
-                        //STATUS CONNECTED
-                        Debug.Log("<color=green>Socket connection active.<color>");
-                    }
-
-                    if (!socketConnection.Connected)
-                    {
-                        Debug.LogError("<color=red>Socket disconnected. Trying to reconnect.</color>");
-                        //STATUS DISCONNECTED
-                        //StopCoroutine("ConnectToTcpServer");
-                        if (!isConnectToTcpServerRunning)
-                        {
-                            //	StartCoroutine("ConnectToTcpServer");
-                        }
-                    }
-                }
-
-                yield return new WaitForSeconds(delay);
             }
         }
 
@@ -156,7 +124,7 @@ namespace VR_Horror
         /// Send message to server using socket connection. 	
         /// </summary>
         [Button]
-        public void SendMessage()
+        public void SendMessage(string triggerValue)
         {
             justSentMessage = false;
             if (socketConnection == null)
@@ -171,6 +139,7 @@ namespace VR_Horror
 
                 if (stream.CanWrite)
                 {
+                    triggerMessageToBeSent = triggerValue;
                     string clientMessage = triggerMessageToBeSent; //"This is a message from one of your clients."; //43
                     // Convert string message to byte array.                 
                     byte[] clientMessageAsByteArray = Encoding.ASCII.GetBytes(clientMessage);
@@ -185,26 +154,31 @@ namespace VR_Horror
                 Debug.Log("Socket exception: " + socketException);
             }
         }
-
-        bool SocketConnected(Socket s)
+        
+        protected virtual void OnEnable ()
         {
-            bool part1 = s.Poll(1000, SelectMode.SelectRead);
-            bool part2 = (s.Available == 0);
-            if (part1 && part2)
-                return false;
-            else
-                return true;
+            AttachEvent();
         }
-        /*
-         It works like this:
-    
-        s.Poll returns true if
-            connection is closed, reset, terminated or pending (meaning no active connection)
-            connection is active and there is data available for reading
-        s.Available returns number of bytes available for reading
-        if both are true:
-            there is no data available to read so connection is not active
-    
-         */
+
+        protected virtual void OnDisable ()
+        {
+            DetachEvents();
+        }
+        
+        private void OnTriggerActivated (InteractiveTriggerType triggerType)
+        {
+            int triggerTypeValue = (int)triggerType;
+            SendMessage(triggerTypeValue.ToString());
+        }
+        
+        private void AttachEvent ()
+        {
+            InteractiveTriggerController.OnTriggerActivated += OnTriggerActivated;
+        }
+
+        private void DetachEvents ()
+        {
+            InteractiveTriggerController.OnTriggerActivated -= OnTriggerActivated;
+        }
     }
 }

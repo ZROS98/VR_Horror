@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace VR_Horror.InteractiveTriggers
@@ -18,6 +19,7 @@ namespace VR_Horror.InteractiveTriggers
 
         public static Action<InteractiveTriggerType> OnTriggerActivated = delegate { };
 
+        [Button]
         public virtual void ActivateInteractiveObject ()
         {
             if (IsReady == false)
