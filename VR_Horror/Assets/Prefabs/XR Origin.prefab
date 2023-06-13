@@ -73,7 +73,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1819,6 +1819,7 @@ GameObject:
   - component: {fileID: 2087589027509188632}
   - component: {fileID: 2087589027509188635}
   - component: {fileID: 1686305241}
+  - component: {fileID: 1788297395}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1904,3 +1905,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &1788297395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087589027509188634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae27744a1087b449824550f6c20dd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <VRCamera>k__BackingField: {fileID: 2087589026324635114}
+  <ScreenCamera>k__BackingField: {fileID: 300924605}
