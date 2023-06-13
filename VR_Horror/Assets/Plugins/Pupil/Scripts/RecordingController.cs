@@ -9,21 +9,30 @@ namespace PupilLabs
     {
         public RequestController requestCtrl;
 
-        [Header("Recording Path")] public bool useCustomPath;
+        [Header("Recording Path")]
+        public bool useCustomPath;
 
         [Tooltip("Please enter the session participant code in order to have the session folder named with it")]
         public string sessionParticipantCode = "";
 
         public GameObject recordingIndicator;
-        [SerializeField] private string customPath;
+        [SerializeField]
+        private string customPath;
 
-        [Header("Controls")] [SerializeField] private bool recordEyeFrames = true;
-        [SerializeField] public bool startRecording;
-        [SerializeField] public bool stopRecording;
+        [Header("Controls")]
+        [SerializeField]
+        private bool recordEyeFrames = true;
+        [SerializeField]
+        public bool startRecording;
+        [SerializeField]
+        public bool stopRecording;
+        
+        public string PlayerName { get; set; } 
+        public bool IsReadyToRecord { get; set; }
 
         public bool IsRecording { get; private set; }
 
-        void OnEnable()
+        void OnEnable ()
         {
             if (requestCtrl == null)
             {
@@ -34,7 +43,7 @@ namespace PupilLabs
             }
         }
 
-        void OnDisable()
+        void OnDisable ()
         {
             if (IsRecording)
             {
@@ -42,9 +51,9 @@ namespace PupilLabs
             }
         }
 
-        void Update()
+        void Update ()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (IsReadyToRecord == true && Input.GetKeyDown(KeyCode.R))
             {
                 if (IsRecording)
                 {
@@ -73,7 +82,7 @@ namespace PupilLabs
             }
         }
 
-        public void StartRecording()
+        public void StartRecording ()
         {
             if (!enabled)
             {
@@ -93,12 +102,11 @@ namespace PupilLabs
                 return;
             }
 
-
             var path = GetRecordingPath();
 
             requestCtrl.Send(new Dictionary<string, object>
             {
-                { "subject", "recording.should_start" }, { "session_name", path }, { "record_eye", recordEyeFrames }
+                {"subject", "recording.should_start"}, {"session_name", path}, {"record_eye", recordEyeFrames}
             });
             IsRecording = true;
 
@@ -106,7 +114,7 @@ namespace PupilLabs
             requestCtrl.OnDisconnecting += StopRecording;
         }
 
-        public void StopRecording()
+        public void StopRecording ()
         {
             if (!IsRecording)
             {
@@ -116,7 +124,7 @@ namespace PupilLabs
 
             requestCtrl.Send(new Dictionary<string, object>
             {
-                { "subject", "recording.should_stop" }
+                {"subject", "recording.should_stop"}
             });
 
             IsRecording = false;
@@ -124,13 +132,13 @@ namespace PupilLabs
             requestCtrl.OnDisconnecting -= StopRecording;
         }
 
-        public void SetCustomPath(string path)
+        public void SetCustomPath (string path)
         {
             useCustomPath = true;
             customPath = path;
         }
 
-        private string GetRecordingPath()
+        private string GetRecordingPath ()
         {
             string path = "";
 
@@ -141,12 +149,13 @@ namespace PupilLabs
             else
             {
                 string date = System.DateTime.Now.ToString("yyyy_MM_dd_HH-mm");
+
                 if (sessionParticipantCode.Length > 0)
                 {
-                    path = $"{Application.dataPath}/{date + " " + sessionParticipantCode}";
+                    path = $"{Application.dataPath}/{PlayerName + date + " " + sessionParticipantCode}";
                 }
                 else
-                    path = $"{Application.dataPath}/{date}";
+                    path = $"{Application.dataPath}/{PlayerName + date}";
 
                 path = path.Replace("Assets/", ""); //go one folder up
             }
