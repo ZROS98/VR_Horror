@@ -1769,7 +1769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ddde66e2324e16825c3c2145ff6239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Duration>k__BackingField: 2
+  <Duration>k__BackingField: 1
   <RayDistance>k__BackingField: 2
   <Timer>k__BackingField: 0
 --- !u!1 &2087589027031472197
@@ -1905,6 +1905,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  <CounterText>k__BackingField: {fileID: 0}
 --- !u!114 &1788297395
 MonoBehaviour:
   m_ObjectHideFlags: 0

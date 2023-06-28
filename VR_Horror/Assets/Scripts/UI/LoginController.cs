@@ -37,8 +37,8 @@ namespace VR_Horror.UI
         private void AddPermissionToRecord ()
         {
             CurrentRecordingController.IsReadyToRecord = true;
-            CurrentRecordingController.startRecording = true;
-            CurrentRecordingController.recordingIndicator.SetActive(true);
+            //CurrentRecordingController.startRecording = true;
+            //CurrentRecordingController.recordingIndicator.SetActive(true);
         }
     }
 }
